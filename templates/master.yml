@@ -1,0 +1,140 @@
+# Set up the fields for the templates
+
+# The top level keys are template names and
+# the next level is field names. For example,
+#
+#     about-us:
+#       title: ...
+#
+# The above corresponds to a template with a
+# file name beginning with "about-us". The
+# extension would depend on what template
+# engine you are using. Also, you can see
+# above that inside "about-us" is a field
+# called "title".
+
+# The name you give a field in this file must
+# correspond to the variable name you use in
+# your templates. All variables must be
+# declared in this file. If a variable is not
+# first declared here, the UI to enter data
+# for it will not be created, and the variable
+# will be left undefined.
+
+# Each field is given a model, a display name,
+# and a description. The model is necessary
+# to validate, store, and create UI for data
+# entry. he other two are optional and only
+# used to help the person entering data.
+
+# Glubber ships with some models built-in:
+# - GlubberTitle
+# - GlubberText
+# - GlubberResource
+# - GlubberHTML
+# - GlubberMarkdown
+
+index: &normal
+  company_name:
+    model: GlubberTitle
+    name: Company Name
+    description: >
+      Name of the company in 200 characters or less.
+      Please watch your capitalization.
+  page_title:
+    model: GlubberTitle
+    name: Page Title
+    description: >
+      Title of the page in 200 characters or less.
+      Please watch your capitalization.
+  main_logo:
+    model: GlubberResource
+    name: Main Logo
+    description: >
+      The full-size company logo (an image). SVG if possible.
+  footer_logo:
+    model: GlubberResource
+    name: Main Logo
+    description: >
+      The version of the company logo meant for the footer.
+  content:
+    model: GlubberMarkdown
+    name: Page Content
+    description: >
+      Main content for the page.
+  support_content:
+    model: GlubberMarkdown
+    name: Support Content
+    description: >
+      Content for the side-bar.
+
+about-us:
+  <<: *normal
+
+blog/index:
+  <<: *normal
+  posts:
+    model: GlubberList
+    name: Blog Post
+    item:
+      title:
+        model: GlubberTitle
+        name: Post Title
+        description: >
+          Title of the blog post in 200 characters or less.
+          Watch your capitalization.
+      image:
+        model: GlubberResource
+        name: Post Image
+        description: >
+          Header image for the blog post.
+      author_name:
+        model: GlubberTitle
+        name: Post Author
+        description: Name of the author (200 character maximum).
+      article:
+        model: GlubberMarkdown
+        name: Post Content
+        description: Content of the blog post.
+
+products/index:
+  <<: *normal
+  products:
+    model: GlubberList
+    name: Products
+    item:
+      name:
+        model: GlubberTitle
+        name: Product Name
+        description: >
+          Name of the product in 200 characters or less.
+          Watch your capitalization.
+      image:
+        model: GlubberResource
+        name: Product Image
+        description: Picture of the product
+      description:
+        model: GlubberMarkdown
+        name: Product Description
+        description: Description of the product.
+
+services/index:
+  <<: *normal
+  services:
+    model: GlubberList
+    name: Services
+    item:
+      name:
+        model: GlubberTitle
+        name: Service Name
+        description: >
+          Name of the service in 200 characters or less.
+          Watch your capitalization.
+      image:
+        model: GlubberResource
+        name: Service Image
+        description: Picture of the service
+      description:
+        model: GlubberMarkdown
+        name: Service Description
+        description: Description of the service.

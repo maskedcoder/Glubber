@@ -18,6 +18,8 @@ Gem::Specification.new do |s|
 
   # If you have other dependencies, add them here
   s.add_dependency "sinatra", "~> 1.4.7"
+  s.add_dependency "data_mapper", "~> 1.2.0"
+  s.add_dependency "dm-sqlite-adapter", "~> 1.2.0"
 
   # If you need to check in files that aren't .rb files, add them here
   s.files        = Dir["{lib}/**/*.rb", "{templates}/**/*.tpl", "{templates}/**/*.yml", "bin/*", "LICENSE", "*.md"]

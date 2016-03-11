@@ -2,43 +2,41 @@ require 'sinatra/base'
 
 module Glubber
   class Server
-
     def initialize()
-      self.findFiles!
+      self.find_files!
     end
 
     # Find all available template files
-    def findFiles!()
-      oldDirectory = Dir.pwd
+    def find_files!()
+      old_directory = Dir.pwd
 
-      templateDirectory = File.dirname(__FILE__) + "/../../templates/"
+      template_directory = File.dirname(__FILE__) + "/../../templates/"
 
-      Dir.chdir templateDirectory
+      Dir.chdir template_directory
 
       @tplFiles = Dir.glob(File.join("**", "*.html.*"))
 
       # Go back to the original directory, just in case
-      Dir.chdir oldDirectory
+      Dir.chdir old_directory
 
       @tplFiles
     end
 
     # Start the server
     def serve!()
-      tplFiles = @tplFiles
+      tpl_files = @tplFiles
 
       server = Sinatra.new do
 
         # Home path:
         # list all the files
         get '/' do
-           tplFiles.join ", "
+           tpl_files.join ", "
         end
 
         # All other paths:
         # Try to match it to a file
         get /(.+)/ do
-
           path = params['captures'].first
 
           # Remove the slash at the start,
@@ -46,17 +44,15 @@ module Glubber
           # no starting slashes
           path[0] = ''
 
-          if tplFiles.include? path
+          if tpl_files.include? path
             'Hello from ' + path
           else
             'Not found on the server: ' + path
           end
         end
-
       end
 
       server.run!
     end
-
   end
 end

@@ -9,9 +9,11 @@ class GlubberTitle
     html = "<label for=\"#{id}\">#{name}</label>" \
            "<input type=\"text\" name=\"#{id}\" id=\"#{id}\" maxlength=\"200\">"
 
-    if description; html += "<p>#{description}</p>" end
+    if description
+      html += "<p>#{description}</p>"
+    end
   end
 end
 
 # Always register the model
-$modelRegistry.push GlubberTitle
+$MODEL_REGISTRY.push GlubberTitle

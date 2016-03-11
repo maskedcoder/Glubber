@@ -1,5 +1,6 @@
 require 'data_mapper'
 require 'dm-sqlite-adapter'
+require 'dm-validations'
 
 $modelRegistry = []
 

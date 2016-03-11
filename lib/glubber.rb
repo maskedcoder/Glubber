@@ -1,7 +1,5 @@
-require "glubber/master_parser"
-require "glubber/database"
-require "glubber/server"
 require "glubber/version"
+require "glubber/boot"
 
 module Glubber
 end

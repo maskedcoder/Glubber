@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Andrew Myers"]
   s.email       = ["maskedcoder@hush.com"]
   s.homepage    = "http://github.com/maskedcoder/glubber"
+  s.license     = "MIT"
   s.summary     = "Static-site generator"
   s.description = "Web-based static-site generator"
 

@@ -9,9 +9,7 @@ class GlubberTitle
     html = "<label for=\"#{id}\">#{name}</label>" \
            "<input type=\"text\" name=\"#{id}\" id=\"#{id}\" maxlength=\"200\">"
 
-    if description
-      html += "<p>#{description}</p>"
-    end
+    html += description ? "<p>#{description}</p>" : ''
   end
 end
 

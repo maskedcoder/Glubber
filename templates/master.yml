@@ -34,107 +34,124 @@
 # - GlubberHTML
 # - GlubberMarkdown
 
-index: &normal
-  company_name:
-    model: GlubberTitle
-    name: Company Name
+GLOBAL:
+  -
+    name: !ruby/symbol company_name
+    model: !ruby/symbol GlubberTitle
+    title: Company Name
     description: >
       Name of the company in 200 characters or less.
       Please watch your capitalization.
-  page_title:
-    model: GlubberTitle
-    name: Page Title
+  -
+    name: !ruby/symbol page_title
+    model: !ruby/symbol GlubberTitle
+    title: Page Title
     description: >
       Title of the page in 200 characters or less.
       Please watch your capitalization.
-  main_logo:
-    model: GlubberResource
-    name: Main Logo
+  -
+    name: !ruby/symbol main_logo
+    model: !ruby/symbol GlubberResource
+    title: Main Logo
     description: >
       The full-size company logo (an image). SVG if possible.
-  footer_logo:
-    model: GlubberResource
-    name: Main Logo
+  -
+    name: !ruby/symbol footer_logo
+    model: !ruby/symbol GlubberResource
+    title: Footer Logo
     description: >
       The version of the company logo meant for the footer.
-  content:
-    model: GlubberMarkdown
-    name: Page Content
+  -
+    name: !ruby/symbol content
+    model: !ruby/symbol GlubberMarkdown
+    title: Page Content
     description: >
       Main content for the page.
-  support_content:
-    model: GlubberMarkdown
-    name: Support Content
+  -
+    name: !ruby/symbol support_content
+    model: !ruby/symbol GlubberMarkdown
+    title: Support Content
     description: >
       Content for the side-bar.
 
+index:
+
 about-us:
-  <<: *normal
 
 blog/index:
-  <<: *normal
-  posts:
-    model: GlubberList
-    name: Blog Post
+  -
+    name: !ruby/symbol posts
+    model: !ruby/symbol GlubberList
+    title: Blog Post
     item:
-      title:
-        model: GlubberTitle
-        name: Post Title
+      -
+        name: !ruby/symbol title
+        model: !ruby/symbol GlubberTitle
+        title: Post Title
         description: >
           Title of the blog post in 200 characters or less.
           Watch your capitalization.
-      image:
-        model: GlubberResource
-        name: Post Image
+      -
+        name: !ruby/symbol image
+        model: !ruby/symbol GlubberResource
+        title: Post Image
         description: >
           Header image for the blog post.
-      author_name:
-        model: GlubberTitle
-        name: Post Author
+      -
+        name: !ruby/symbol author_name
+        model: !ruby/symbol GlubberTitle
+        title: Post Author
         description: Name of the author (200 character maximum).
-      article:
-        model: GlubberMarkdown
-        name: Post Content
+      -
+        name: !ruby/symbol article
+        model: !ruby/symbol GlubberMarkdown
+        title: Post Content
         description: Content of the blog post.
 
 products/index:
-  <<: *normal
-  products:
-    model: GlubberList
-    name: Products
+  -
+    name: !ruby/symbol products
+    model: !ruby/symbol GlubberList
+    title: Products
     item:
-      name:
-        model: GlubberTitle
-        name: Product Name
+      -
+        name: !ruby/symbol name
+        model: !ruby/symbol GlubberTitle
+        title: Product Name
         description: >
           Name of the product in 200 characters or less.
           Watch your capitalization.
-      image:
-        model: GlubberResource
-        name: Product Image
+      -
+        name: !ruby/symbol image
+        model: !ruby/symbol GlubberResource
+        title: Product Image
         description: Picture of the product
-      description:
-        model: GlubberMarkdown
-        name: Product Description
+      -
+        name: !ruby/symbol description
+        model: !ruby/symbol GlubberMarkdown
+        title: Product Description
         description: Description of the product.
 
 services/index:
-  <<: *normal
-  services:
-    model: GlubberList
-    name: Services
+  -
+    name: !ruby/symbol services
+    model: !ruby/symbol GlubberList
+    title: Services
     item:
-      name:
-        model: GlubberTitle
-        name: Service Name
+      -
+        name: !ruby/symbol name
+        model: !ruby/symbol GlubberTitle
+        title: Service Name
         description: >
           Name of the service in 200 characters or less.
           Watch your capitalization.
-      image:
-        model: GlubberResource
-        name: Service Image
+      -
+        name: !ruby/symbol image
+        model: !ruby/symbol GlubberResource
+        title: Service Image
         description: Picture of the service
-      description:
-        model: GlubberMarkdown
-        name: Service Description
+      -
+        name: !ruby/symbol description
+        model: !ruby/symbol GlubberMarkdown
+        title: Service Description
         description: Description of the service.

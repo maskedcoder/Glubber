@@ -1,4 +1,6 @@
 require 'sinatra/base'
+require 'yaml'
+require 'pp'
 
 module Glubber
   class Server
@@ -16,6 +18,29 @@ module Glubber
       Dir.chdir old_directory
 
       tpl_files
+    end
+
+    # Find all the variables connected with a template
+    def self.load_variables(template)
+      # Remove file extension
+      template_name = template.gsub(/(\.\w+)+$/, '')
+
+      # Hard-coded file that contains all variable data
+      # This may change in the future
+      master_file = File.dirname(__FILE__) + "/../../templates/master.yml"
+
+      all_variable_data = YAML.load_file master_file
+
+      # Load the specific template's data and copy in global variables
+      template_data = (all_variable_data[template_name] || []) + (all_variable_data['GLOBAL'] || [])
+
+      template_data.each do |variable|
+        # For now just use GlubberTitle because we
+        # don't have any other models yet
+        variable['model'] = GlubberTitle.new
+      end
+
+      template_data
     end
 
     # Start the server
@@ -41,7 +66,11 @@ module Glubber
           tpl_files = Server::find_files
 
           if tpl_files.include? path
-            'Hello from ' + path
+            erb :edit, :locals => {
+              :file => path,
+              :variables => Server::load_variables(path),
+              :files => tpl_files
+            }
           else
             'Not found on the server: ' + path
           end

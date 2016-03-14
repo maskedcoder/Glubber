@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Editing <%= file %> | Glubber</title>
+  </head>
+  <body>
+    <h1>Editing <%= file %></h1>
+    <form action="">
+      <% for variable in variables %>
+        <%= variable['model'].render_form variable['title'], variable['description'] %>
+      <% end %>
+    </form>
+    <nav>
+      <ul>
+        <li><a href="/"><em>All Templates</em></a></li>
+        <% for file in files %>
+          <li><a href="/<%= file %>"><%= file %></a></li>
+        <% end %>
+      </ul>
+    </nav>
+  </body>
+</html>

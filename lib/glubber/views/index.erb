@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Glubber</title>
+  </head>
+  <body>
+    <h1>Templates</h1>
+    <ul>
+      <% for file in tpl_files %>
+        <li><a href="/<%= file %>"><%= file %></a></li>
+      <% end %>
+    </ul>
+  </body>
+</html>

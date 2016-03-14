@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
   s.add_dependency "dm-sqlite-adapter", "~> 1.2.0"
 
   # If you need to check in files that aren't .rb files, add them here
-  s.files        = Dir["{lib}/**/*.rb", "{templates}/**/*.tpl", "{templates}/**/*.yml", "bin/*", "LICENSE", "*.md"]
+  s.files        = Dir["{lib}/**/*.rb", "{lib}/**/*.erb", "{lib}/**/*.js",
+                       "{lib}/**/*.css", "{templates}/**/*.tpl",
+                       "{templates}/**/*.yml", "bin/*", "LICENSE", "*.md"]
   s.require_path = 'lib'
 
   # If you need an executable, add it here
